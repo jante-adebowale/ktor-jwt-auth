@@ -1,0 +1,32 @@
+
+# REGISTER NEW USER
+POST localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Jante Adebowale",
+  "password": "12345",
+  "phone": "7032111211",
+  "dialCode": "+234"
+
+}
+
+### Login
+POST localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "password": "12345",
+  "username": "7032111211",
+  "dialCode": "+234"
+}
+
+### Auth Me
+GET localhost:8080/api/auth/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJtb2JpbGUtYXBwbGljYXRpb24iLCJpc3MiOiJodHRwczovL2phbnRlYWRlYm93YWxlLmNvbS8iLCJ1c2VybmFtZSI6IisyMzQ3MDMyMTExMjExIiwic3ViIjoiKzIzNDcwMzIxMTEyMTEiLCJleHAiOjE3NDU1MTQyMTJ9.zQb6M7I3I895iASmUD6GwY6fBlHd4S8F_0JVe_xXa9U
+
+### Refresh Token
+GET http://localhost:8080/api/auth/refresh-token
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJtb2JpbGUtYXBwbGljYXRpb24iLCJpc3MiOiJodHRwczovL2phbnRlYWRlYm93YWxlLmNvbS8iLCJ1c2VybmFtZSI6IisyMzQ3MDMyMTExMjExIiwic3ViIjoiKzIzNDcwMzIxMTEyMTEiLCJleHAiOjE3NTA2OTQ2MTJ9.WNcWQV3uVy8Hcgyr5bJsc-Hk1DyizQpEcNRusqjmjwY
