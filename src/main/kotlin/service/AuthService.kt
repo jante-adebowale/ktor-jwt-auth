@@ -68,6 +68,7 @@ class AuthService(
         if (user == null || !passwordMatches(loginRequest.password, user.password)) {
             throw UnauthorizedException("Invalid Phone or password!")
         }
+
         val accessTokenValue = jwtService.createAccessToken(phone)
         val refreshTokenValue = jwtService.createFreshToken(phone)
         tokenRepository.revokedAllTokens(user.id, DateUtil.currentDateTime())

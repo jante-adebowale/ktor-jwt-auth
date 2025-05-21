@@ -22,8 +22,13 @@ object DateUtil {
         )
     }
 
-    fun getExpirationInstantInDays(days: Long): Instant {
+    fun getExpirationInstantInSeconds(seconds: Long): Instant {
+        return java.time.LocalDateTime.now().plusSeconds(seconds).toInstant(
+            ZoneOffset.UTC
+        )
+    }
 
+    fun getExpirationInstantInDays(days: Long): Instant {
         return java.time.LocalDateTime.now().plusDays(days).toInstant(
             ZoneOffset.UTC
         )

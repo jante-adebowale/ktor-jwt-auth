@@ -1,10 +1,8 @@
 package com.janteadebowale.plugins
 
-import com.janteadebowale.routing.authMe
-import com.janteadebowale.routing.login
-import com.janteadebowale.routing.refreshToken
-import com.janteadebowale.routing.register
+import com.janteadebowale.routing.*
 import com.janteadebowale.service.AuthService
+import com.janteadebowale.service.TransactionService
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -17,10 +15,10 @@ import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
     val authService by inject<AuthService>()
+    val transactionService by inject<TransactionService>()
     routing {
         route("/api") {
             route("/auth") {
-
                 register(authService)
 
                 login(authService)
@@ -31,6 +29,12 @@ fun Application.configureRouting() {
 
                 authenticate("refresh-token-auth") {
                     refreshToken(authService = authService)
+                }
+            }
+
+            route("/transactions") {
+                authenticate("access-token-auth") {
+                    transactionRoute(transactionService)
                 }
             }
         }

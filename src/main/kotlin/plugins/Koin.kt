@@ -6,6 +6,7 @@ import com.janteadebowale.repository.impl.TokenRepositoryImpl
 import com.janteadebowale.repository.impl.UserRepositoryImpl
 import com.janteadebowale.service.AuthService
 import com.janteadebowale.service.JwtService
+import com.janteadebowale.service.TransactionService
 import io.ktor.server.application.*
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
@@ -22,6 +23,7 @@ val repositoryModule = module {
 val serviceModule = module {
     singleOf(::JwtService)
     singleOf(::AuthService)
+    singleOf(::TransactionService)
 }
 
 fun Application.configureKoin() {

@@ -43,12 +43,12 @@ class JwtService(
         .build()
 
     fun createAccessToken(username: String) = createToken(
-        username, expireAt = DateUtil.getExpirationInstantInMinutes(1)
+        username, expireAt = DateUtil.getExpirationInstantInSeconds(120)
     )
 
     fun createFreshToken(username: String) =
         createToken(
-            username, expireAt = DateUtil.getExpirationInstantInDays(60)
+            username, expireAt = DateUtil.getExpirationInstantInDays(30)
         )
 
     private fun createToken(username: String, expireAt: Instant): String {
@@ -63,7 +63,7 @@ class JwtService(
     }
 
     suspend fun validate(authBearer: String?, credential: JWTCredential, isAccessToken: Boolean = true): JWTPrincipal? {
-        logger.info("JWT : $authBearer")
+//        logger.info("JWT : $authBearer")
         if (authBearer == null) return null
 
         if (!authBearer.contains("Bearer ")) return null
